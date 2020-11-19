@@ -11,7 +11,7 @@ func TestParseUser(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	result := ParseUser(file, "黄小仙")
+	result := ParseUser(file)
 	profile := result.Items[0].(model.Profile)
 	expected := model.Profile{
 		Name:       "黄小仙",

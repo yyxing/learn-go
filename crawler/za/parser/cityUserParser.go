@@ -21,9 +21,7 @@ func ParseCityUser(content []byte) types.ParseResult {
 			Method: http.MethodGet,
 			Body:   nil,
 			// 这个解析器获取用户url的请求，解析函数使用用户的解析函数 解析用户信息
-			ParseFunc: func(bytes []byte) types.ParseResult {
-				return ParseUser(bytes, name)
-			},
+			ParseFunc: ParseUser,
 		})
 	}
 	return cityUserResult
