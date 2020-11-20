@@ -14,19 +14,18 @@ func TestParseUser(t *testing.T) {
 	result := ParseUser(file)
 	profile := result.Items[0].(model.Profile)
 	expected := model.Profile{
-		Name:       "黄小仙",
-		Age:        34,
-		Height:     "173CM",
-		Weight:     "65KG",
-		Income:     "5-8千",
-		Gender:     "女",
-		XinZuo:     "天秤座(09.23-10.22)",
-		Marriage:   "离异",
-		Education:  "大专",
-		Occupation: "经销商",
-		HuKou:      "江苏淮安",
-		House:      "未买车",
-		Car:        "未购车",
+		Name:      "林姑娘",
+		Age:       34,
+		Height:    "173cm",
+		Weight:    "65kg",
+		Income:    "5001-8000元",
+		Gender:    "女士",
+		XinZuo:    "天秤座(09.23-10.22)",
+		Marriage:  "离异",
+		Education: "大专",
+		HuKou:     "江苏淮安",
+		House:     "打算婚后购房",
+		Car:       "未买车",
 	}
 	if profile != expected {
 		t.Errorf("expected %v\n, but was %v\n", expected, profile)

@@ -3,43 +3,51 @@ package parser
 import (
 	"awesomeProject/crawler/types"
 	"awesomeProject/crawler/za/model"
-	"encoding/json"
 	"fmt"
 	"regexp"
 	"strings"
+
+	"github.com/tidwall/gjson"
 )
 
-var objectInfoRe = regexp.MustCompile(`("objectInfo": {[\s\S]*)"interest"`)
+var objectInfoRe = regexp.MustCompile(`{("objectInfo":{[\s\S]*)"interest"`)
 
 func ParseUser(content []byte) types.ParseResult {
 	profile := model.Profile{}
-	objectInfoStr := strings.TrimSpace(extractString(content, objectInfoRe))
+	objectInfoStr := extractString(content, objectInfoRe)
 	objectInfoStr = objectInfoStr[:strings.LastIndex(objectInfoStr, ",")]
 	objectInfoStr = fmt.Sprintf("{%s}", objectInfoStr)
-	var objectInfo map[string]interface{}
-	err := json.Unmarshal([]byte(objectInfoStr), &objectInfo)
-	if err == nil {
-		fmt.Println(objectInfo)
-		// 拼接信息
-		//profile.Name = objectInfo["nickname"].(string)
-		//profile.Car = objectInfo["momentCount"].(string)
-		//profile.Height = objectInfo["heightString"].(string)
-		//profile.Weight = objectInfo["momentCount"].(string)
-		//profile.Income = objectInfo["salaryString"].(string)
-		//profile.House = objectInfo["momentCount"].(string)
-		//profile.HuKou = objectInfo["momentCount"].(string)
-		//profile.XinZuo = objectInfo["momentCount"].(string)
-		//profile.Age = objectInfo["age"].(int)
-		//profile.Education = objectInfo["educationString"].(string)
-		//profile.Occupation = objectInfo["momentCount"].(string)
-		//profile.Gender = objectInfo["genderString"].(string)
-		//profile.Marriage = objectInfo["marriageString"].(string)
+	for _, item := range gjson.Get(objectInfoStr, "objectInfo.basicInfo").Array() {
+		if strings.Index(item.String(), "座") != -1 {
+			profile.XinZuo = item.String()
+		}
+		if strings.Index(item.String(), "kg") != -1 {
+			profile.Weight = item.String()
+		}
 	}
+	for _, item := range gjson.Get(objectInfoStr, "objectInfo.detailInfo").Array() {
+		if strings.Index(item.String(), "车") != -1 {
+			profile.Car = item.String()
+		}
+		if strings.LastIndex(item.String(), "籍贯:") != -1 {
+			profile.HuKou = item.String()[strings.LastIndex(item.String(), "籍贯:")+len("籍贯:"):]
+		}
+		if strings.Index(item.String(), "房") != -1 || strings.Index(item.String(), "住") != -1 {
+			profile.House = item.String()
+		}
+	}
+	// 拼接信息
+	profile.Name = gjson.Get(objectInfoStr, "objectInfo.nickname").String()
+	profile.Height = gjson.Get(objectInfoStr, "objectInfo.heightString").String()
+	profile.Income = gjson.Get(objectInfoStr, "objectInfo.salaryString").String()
+	profile.Age = gjson.Get(objectInfoStr, "objectInfo.age").Int()
+	profile.Education = gjson.Get(objectInfoStr, "objectInfo.educationString").String()
+	profile.Gender = gjson.Get(objectInfoStr, "objectInfo.genderString").String()
+	profile.Marriage = gjson.Get(objectInfoStr, "objectInfo.marriageString").String()
 	// 结束递归
 	userResult := types.ParseResult{
 		Items: []interface{}{profile},
 	}
-	fmt.Println("Get Item ", profile)
 	return userResult
 }
 
