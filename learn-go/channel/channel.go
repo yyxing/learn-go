@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 func Worker(id int, c chan int) {
@@ -51,6 +50,8 @@ func channelBuffer() {
 func main() {
 	//channelDemo()
 	//channelBuffer()
-	channelClose()
-	time.Sleep(time.Millisecond)
+	//channelClose()
+	var c = make(chan int)
+	go func() { c <- 1 }()
+	fmt.Println(<-c)
 }

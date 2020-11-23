@@ -54,7 +54,7 @@ func main() {
 		case activeWorker <- activeValue:
 			values = values[1:]
 		case <-after:
-			fmt.Println("程序结束，挤压了", len(values), "数据")
+			fmt.Println("程序结束，积压了", len(values), "数据")
 			return
 		}
 	}
