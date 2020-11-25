@@ -1,8 +1,13 @@
 package entity
 
+import "time"
+
 type User struct {
-	username string
-	password string
+	Id         int64
+	Username   string
+	Password   string
+	CreateTime time.Time
+	UpdateTime time.Time
 }
 
 type Video struct {

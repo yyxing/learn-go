@@ -1,11 +1,11 @@
 package main
 
 import (
-	"awesomeProject/func/fib"
 	"bufio"
 	"fmt"
 	"io"
 	"strings"
+	"sync"
 )
 
 // 函数实现接口
@@ -28,6 +28,22 @@ func printFileContents(reader io.Reader) {
 	}
 }
 func main() {
-	var f intGen = fib.Fibonacci()
-	printFileContents(f)
+	//var f intGen = fib.Fibonacci()
+	//printFileContents(f)
+	var wp = sync.WaitGroup{}
+	wp.Add(100)
+	sum := 0
+	sumTemp := 0
+	for i := 0; i < 100; i++ {
+		go func() {
+			for i := 0; i < 10; i++ {
+				sumTemp = sumTemp + 1
+				sum = sumTemp
+			}
+			wp.Done()
+		}()
+	}
+	wp.Wait()
+	fmt.Println(sumTemp == 1000)
+	fmt.Println(sumTemp)
 }
