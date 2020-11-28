@@ -1,0 +1,9 @@
+datasource:
+  - driver: mysql
+    username: root
+    password: root123
+    url: tcp(ouroboros-mysql.mysql:30306)/ouroboros_storage?charset=utf8&parseTime=true
+  - driver: mysql
+    username: root
+    password: root123
+    url: tcp(ouroboros-mysql.mysql:30306)/ouroboros_storage?charset=utf8&parseTime=true
