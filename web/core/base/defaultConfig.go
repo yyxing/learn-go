@@ -49,8 +49,7 @@ func (config *ConfigStarter) Init(context core.ApplicationContext) {
 		}
 	}
 	if err := v.ReadInConfig(); err != nil {
-		log.Println("read config failed error message:", err)
-		return
+		panic("read config failed error message:" + err.Error())
 	}
 	context.Set(GlobalConfigKey, *v)
 	log.Println("config init success")

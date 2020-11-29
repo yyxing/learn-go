@@ -18,6 +18,7 @@ func New() {
 func Default() Application {
 	application := Application{context: core.ApplicationContext{}}
 	application.context.Register(&base.ConfigStarter{})
+	application.context.Register(&base.DatasourceStarter{})
 	application.context.SortStarter()
 	return application
 }

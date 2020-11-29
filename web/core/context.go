@@ -1,6 +1,7 @@
 package core
 
 import (
+	"log"
 	"reflect"
 	"sort"
 )
@@ -59,9 +60,12 @@ func (context *ApplicationContext) Set(key string, value interface{}) {
 	context.context[key] = value
 }
 
-func (context *ApplicationContext) Get(key string) (interface{}, bool) {
+func (context *ApplicationContext) Get(key string) interface{} {
 	value, ok := context.context[key]
-	return value, ok
+	if !ok {
+		log.Printf("%v load failed\n", value)
+	}
+	return value
 }
 
 func (context *ApplicationContext) Remove(key string) {
