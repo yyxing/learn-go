@@ -1,4 +1,4 @@
-package base
+package starter
 
 import (
 	"fmt"
@@ -7,6 +7,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/spf13/viper"
 	"learn-go/web/core"
+	"learn-go/web/core/context"
 )
 
 var (
@@ -40,7 +41,7 @@ func GetDB(datasourceName string) *gorm.DB {
 }
 
 // mysql连接配置
-func (starter *DatasourceStarter) Init(context core.ApplicationContext) {
+func (starter *DatasourceStarter) Init(context context.ApplicationContext) {
 	config, ok := context.Get(GlobalConfigKey).(viper.Viper)
 	if !ok {
 		panic("database config load failed")
@@ -49,7 +50,7 @@ func (starter *DatasourceStarter) Init(context core.ApplicationContext) {
 }
 
 // 正式建立连接
-func (starter *DatasourceStarter) Start(context core.ApplicationContext) {
+func (starter *DatasourceStarter) Start(context context.ApplicationContext) {
 	dbMap = make(map[string]*gorm.DB)
 	for i, datasource := range starter.datasourceList {
 		driverName := datasource.Driver
@@ -81,12 +82,12 @@ func (starter *DatasourceStarter) datasourceAssembly(config viper.Viper) {
 }
 
 // 关闭db
-func (starter *DatasourceStarter) Finalize(context core.ApplicationContext) {
+func (starter *DatasourceStarter) Finalize(context context.ApplicationContext) {
 	for _, db := range dbMap {
 		db.Close()
 	}
 }
 
 func (starter *DatasourceStarter) GetOrder() int {
-	return -1
+	return core.Int32Min + 1
 }

@@ -1,6 +1,7 @@
-package core
+package context
 
 import (
+	"learn-go/web/core"
 	"log"
 	"reflect"
 	"sort"
@@ -18,7 +19,7 @@ type ApplicationContext struct {
 
 // 声明starter注册器
 type starterRegister struct {
-	starters []Starter
+	starters []core.Starter
 }
 
 func (register starterRegister) Len() int { return len(register.starters) }
@@ -31,7 +32,7 @@ func (register starterRegister) Less(i, j int) bool {
 }
 
 // 注册starter到上下文中
-func (context *ApplicationContext) Register(starter Starter) {
+func (context *ApplicationContext) Register(starter core.Starter) {
 	if context.context == nil {
 		context.context = make(map[string]interface{})
 	}
@@ -48,11 +49,11 @@ func (context *ApplicationContext) SortStarter() {
 }
 
 // 注册器注册
-func (register *starterRegister) register(starter Starter) {
+func (register *starterRegister) register(starter core.Starter) {
 	register.starters = append(register.starters, starter)
 }
 
-func (context ApplicationContext) GetAllStarters() []Starter {
+func (context ApplicationContext) GetAllStarters() []core.Starter {
 	return context.starters
 }
 

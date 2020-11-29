@@ -1,11 +1,11 @@
 package main
 
 import (
-	"learn-go/web/infra"
+	"learn-go/web/core/boot"
 )
 
 func main() {
-	application := infra.Default()
+	application := boot.Default()
 	application.Run()
 	defer application.Stop()
 }

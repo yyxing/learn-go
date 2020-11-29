@@ -1,9 +1,10 @@
-package base
+package starter
 
 import (
 	"github.com/spf13/viper"
 	"io/ioutil"
 	"learn-go/web/core"
+	"learn-go/web/core/context"
 	"log"
 	"path"
 	"strings"
@@ -18,7 +19,7 @@ const (
 	GlobalConfigKey = "SystemConfig"
 )
 
-func (config *ConfigStarter) Init(context core.ApplicationContext) {
+func (config *ConfigStarter) Init(context context.ApplicationContext) {
 	configPath := "./resource"
 	v := viper.New()
 	if config.configName != "" && len(config.configName) > 0 {
@@ -55,10 +56,10 @@ func (config *ConfigStarter) Init(context core.ApplicationContext) {
 	log.Println("config init success")
 }
 
-func (config *ConfigStarter) Finalize(context core.ApplicationContext) {
+func (config *ConfigStarter) Finalize(context context.ApplicationContext) {
 	context.Remove(GlobalConfigKey)
 }
 
 func (config *ConfigStarter) GetOrder() int {
-	return ^int(^uint32(0) >> 1)
+	return core.Int32Min
 }

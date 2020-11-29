@@ -1,12 +1,12 @@
-package infra
+package boot
 
 import (
-	"learn-go/web/core"
-	"learn-go/web/core/base"
+	context2 "learn-go/web/core/context"
+	"learn-go/web/core/starter"
 )
 
 type Application struct {
-	context core.ApplicationContext
+	context context2.ApplicationContext
 }
 
 // TODO 由用户指定starter启动 暂未想好如何实现
@@ -16,9 +16,10 @@ func New() {
 
 // 默认配置启动 config log sql等
 func Default() Application {
-	application := Application{context: core.ApplicationContext{}}
-	application.context.Register(&base.ConfigStarter{})
-	application.context.Register(&base.DatasourceStarter{})
+	application := Application{context: context2.ApplicationContext{}}
+	application.context.Register(&starter.ConfigStarter{})
+	application.context.Register(&starter.DatasourceStarter{})
+	application.context.Register(&starter.LogStarter{})
 	application.context.SortStarter()
 	return application
 }
