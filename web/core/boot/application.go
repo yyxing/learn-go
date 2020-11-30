@@ -1,12 +1,19 @@
 package boot
 
 import (
+	"github.com/kataras/iris/v12"
+	"learn-go/web/core"
 	"learn-go/web/core/context"
 	"learn-go/web/core/starter"
 )
 
 type Application struct {
 	context context.ApplicationContext
+}
+type Handler struct {
+	path   string
+	method string
+	handle interface{}
 }
 
 // TODO 由用户指定starter启动 暂未实现
@@ -23,10 +30,11 @@ func Default() Application {
 	application.context.Register(&starter.ValidatorStarter{})
 	application.context.Register(&starter.WebServerStarter{})
 	application.context.SortStarter()
+	application.run()
 	return application
 }
 
-func (application *Application) Run() {
+func (application *Application) run() {
 	application.init()
 	application.start()
 }
@@ -45,10 +53,34 @@ func (application *Application) start() {
 		// 调用每个starter的start方法
 		starter.Start(application.context)
 	}
+	port = application.context.Get(core.ServerPortKey).(string)
 }
 func (application *Application) Stop() {
 	// 停止所有starter
 	for _, starter := range application.context.GetAllStarters() {
 		starter.Finalize(application.context)
 	}
+}
+
+var port string
+
+func (application *Application) RegisterIrisHandlers(app *iris.Application, handlers []Handler) {
+	for _, handler := range handlers {
+		app.Handle(handler.method, handler.path, handler.handle.(func(iris.Context)))
+	}
+}
+
+//func (application *Application) RegisterGinHandlers(app *gin.Engine, handlers []GinHandler) {
+//	for _, handler := range handlers {
+//		app.Handle(handler.method, handler.path, handler.handle)
+//	}
+//}
+//func (application *Application) RegisterHttpRouteHandlers(app *httprouter.Router, handlers []HttpRouteHandler) {
+//	for _, handler := range handlers {
+//		app.Handle(handler.method, handler.path, handler.handle)
+//	}
+//}
+
+func (application *Application) RunIrisServer(app *iris.Application) {
+	app.Run(iris.Addr(port))
 }

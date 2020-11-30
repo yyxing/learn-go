@@ -1,11 +1,13 @@
 package main
 
 import (
+	"learn-go/web/app"
 	"learn-go/web/core/boot"
 )
 
 func main() {
 	application := boot.Default()
-	application.Run()
+	iris := app.InitIris()
+	application.RunIrisServer(iris)
 	defer application.Stop()
 }

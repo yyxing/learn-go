@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func initIris() *iris.Application {
+func InitIris() *iris.Application {
 	app := iris.New()
 	app.Use(irisRecover.New())
 	cfg := logger.Config{
