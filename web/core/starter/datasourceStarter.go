@@ -44,7 +44,7 @@ func GetDB(datasourceName string) *gorm.DB {
 func (starter *DatasourceStarter) Init(context context.ApplicationContext) {
 	config, ok := context.Get(GlobalConfigKey).(viper.Viper)
 	if !ok {
-		panic("database config load failed")
+		panic("config load failed")
 	}
 	starter.datasourceAssembly(config)
 }
@@ -89,5 +89,5 @@ func (starter *DatasourceStarter) Finalize(context context.ApplicationContext) {
 }
 
 func (starter *DatasourceStarter) GetOrder() int {
-	return core.Int32Min + 1
+	return core.Int32Min + 2
 }

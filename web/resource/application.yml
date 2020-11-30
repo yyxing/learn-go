@@ -4,3 +4,5 @@ datasource:
     password: root123
     url: tcp(154.8.173.3:33606)/video_server?charset=utf8&parseTime=true
     datasourceName: video_server
+server:
+  port: 9000

@@ -20,9 +20,12 @@ func (starter LogStarter) Init(context context.ApplicationContext) {
 		FullTimestamp:   true,
 		TimestampFormat: "2006-01-02 15:04:03.00000",
 	}
+	formatter.SetColorScheme(&prefixed.ColorScheme{
+		TimestampStyle: "37",
+	})
 	log.SetFormatter(&formatter)
 }
 
 func (starter LogStarter) GetOrder() int {
-	return core.Int32Min + 2
+	return core.Int32Min
 }

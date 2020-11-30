@@ -1,6 +1,7 @@
 package starter
 
 import (
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"io/ioutil"
 	"learn-go/web/core"
@@ -53,7 +54,7 @@ func (config *ConfigStarter) Init(context context.ApplicationContext) {
 		panic("read config failed error message:" + err.Error())
 	}
 	context.Set(GlobalConfigKey, *v)
-	log.Println("config init success")
+	logrus.Info("config init success")
 }
 
 func (config *ConfigStarter) Finalize(context context.ApplicationContext) {
@@ -61,5 +62,5 @@ func (config *ConfigStarter) Finalize(context context.ApplicationContext) {
 }
 
 func (config *ConfigStarter) GetOrder() int {
-	return core.Int32Min
+	return core.Int32Min + 1
 }
