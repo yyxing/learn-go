@@ -2,6 +2,7 @@ package boot
 
 import (
 	"github.com/kataras/iris/v12"
+	"github.com/sirupsen/logrus"
 	"learn-go/web/core"
 	"learn-go/web/core/context"
 	"learn-go/web/core/starter"
@@ -64,23 +65,9 @@ func (application *Application) Stop() {
 
 var port string
 
-func (application *Application) RegisterIrisHandlers(app *iris.Application, handlers []Handler) {
-	for _, handler := range handlers {
-		app.Handle(handler.method, handler.path, handler.handle.(func(iris.Context)))
-	}
-}
-
-//func (application *Application) RegisterGinHandlers(app *gin.Engine, handlers []GinHandler) {
-//	for _, handler := range handlers {
-//		app.Handle(handler.method, handler.path, handler.handle)
-//	}
-//}
-//func (application *Application) RegisterHttpRouteHandlers(app *httprouter.Router, handlers []HttpRouteHandler) {
-//	for _, handler := range handlers {
-//		app.Handle(handler.method, handler.path, handler.handle)
-//	}
-//}
-
 func (application *Application) RunIrisServer(app *iris.Application) {
-	app.Run(iris.Addr(port))
+	for _, route := range app.GetRoutes() {
+		logrus.Info(route)
+	}
+	_ = app.Run(iris.Addr(port))
 }

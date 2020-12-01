@@ -21,10 +21,6 @@ func (starter *WebServerStarter) Init(context context.ApplicationContext) {
 		port = ":8080"
 	}
 	context.Set(core.ServerPortKey, port)
-	//routes := core.IrisApplication.GetRoutes()
-	//for _, route := range routes {
-	//	logrus.Info(route)
-	//}
 }
 
 func (starter *WebServerStarter) GetOrder() int {

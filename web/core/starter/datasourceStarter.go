@@ -63,7 +63,7 @@ func (starter *DatasourceStarter) Start(context context.ApplicationContext) {
 			if i == 0 {
 				dbMap[defaultDatasourceName] = db
 			} else {
-				dbMap[defaultDatasourceName+"-"+string(i)] = db
+				dbMap[defaultDatasourceName+"-"+string(rune(i))] = db
 			}
 			continue
 		}
