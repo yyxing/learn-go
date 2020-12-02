@@ -30,10 +30,13 @@ require (
 	github.com/onsi/ginkgo v1.14.2 // indirect
 	github.com/onsi/gomega v1.10.3 // indirect
 	github.com/qiangxue/fasthttp-routing v0.0.0-20160225050629-6ccdc2a18d87
+	github.com/segmentio/ksuid v1.0.3 // indirect
 	github.com/sergi/go-diff v1.1.0 // indirect
+	github.com/shopspring/decimal v1.2.0 // indirect
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/sirupsen/logrus v1.7.0 // indirect
 	github.com/smartystreets/goconvey v1.6.4 // indirect
+	github.com/sony/sonyflake v1.0.0 // indirect
 	github.com/stretchr/testify v1.6.1 // indirect
 	github.com/valyala/fasthttp v1.17.0
 	github.com/x-cray/logrus-prefixed-formatter v0.5.2 // indirect

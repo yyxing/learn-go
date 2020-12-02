@@ -2,7 +2,7 @@ datasource:
   - driver: mysql
     username: root
     password: root123
-    url: tcp(154.8.173.3:33606)/video_server?charset=utf8&parseTime=true
-    datasourceName: video_server
+    url: tcp(154.8.173.3:33606)/resk?charset=utf8&parseTime=true&loc=Local
+    datasourceName: resk
 server:
   port: 9000

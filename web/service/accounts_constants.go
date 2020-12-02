@@ -6,7 +6,7 @@ const (
 	// 转账失败
 	TransferFailure TransferStatus = -1
 	// 余额不足
-	TransferSufficientFunds TransferStatus = 0
+	TransferSufficientFunds TransferStatus = -2
 	// 转账成功
 	TransferSuccess TransferStatus = 1
 )
@@ -16,7 +16,7 @@ type TransferType int8
 
 const (
 	// 账户创建
-	AccountCreated TransferType = 0
+	AccountCreated TransferType = 100
 	// 自己向个人账户中充值
 	AccountStoreValue TransferType = 1
 	// 通过转账支出
@@ -31,9 +31,9 @@ type AccountChangeType int8
 
 const (
 	// 用于资金列表详情时标识
-	FlagAccountCreated AccountChangeType = 0
+	FlagAccountCreated AccountChangeType = 1
 	// 资金收入
-	AccountIncoming AccountChangeType = 1
+	AccountIncoming AccountChangeType = 2
 	// 资金支出
 	AccountOutgoing AccountChangeType = -1
 )

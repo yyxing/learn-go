@@ -2,7 +2,6 @@ package core
 
 import (
 	"github.com/go-playground/validator/v10"
-	jsoniter "github.com/json-iterator/go"
 )
 
 const (
@@ -14,5 +13,4 @@ const (
 
 var (
 	Validate *validator.Validate
-	Json     = jsoniter.ConfigCompatibleWithStandardLibrary
 )

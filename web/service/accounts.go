@@ -38,12 +38,14 @@ type AccountCreatedDTO struct {
 	AccountName  string
 	AccountType  int
 	CurrencyCode string
-	Amount       string
+	Balance      string
 }
 
 // 账户创建成功后的返回值
 type AccountDTO struct {
 	AccountCreatedDTO
 	AccountNo string
+	Status    int
 	CreatedAt time.Time
+	UpdatedAt time.Time
 }

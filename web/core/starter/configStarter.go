@@ -8,11 +8,12 @@ import (
 	"learn-go/web/core/context"
 	"log"
 	"path"
+	"path/filepath"
 	"strings"
 )
 
 type ConfigStarter struct {
-	configName string
+	ConfigPath string
 	AbstractStarter
 }
 
@@ -23,12 +24,12 @@ const (
 func (config *ConfigStarter) Init(context context.ApplicationContext) {
 	configPath := "./resource"
 	v := viper.New()
-	if config.configName != "" && len(config.configName) > 0 {
-		if strings.Contains(config.configName, "/") {
-			v.SetConfigFile(config.configName)
+	if config.ConfigPath != "" && len(config.ConfigPath) > 0 {
+		if strings.Contains(config.ConfigPath, string(filepath.Separator)) {
+			v.SetConfigFile(config.ConfigPath)
 		} else {
 			v.AddConfigPath(configPath)
-			v.SetConfigName(config.configName)
+			v.SetConfigName(config.ConfigPath)
 		}
 	} else {
 		files, err := ioutil.ReadDir(configPath)
@@ -45,7 +46,7 @@ func (config *ConfigStarter) Init(context context.ApplicationContext) {
 					v.SetConfigName(file.Name())
 					v.SetConfigType(suffix)
 				default:
-					log.Println("config type can not parse")
+					logrus.Errorf("config %s type can not parse", file.Name())
 				}
 			}
 		}

@@ -23,6 +23,17 @@ func New() {
 }
 
 // 默认配置启动 config log sql等
+func TestEnv(configPath string) Application {
+	application := Application{context: context.ApplicationContext{}}
+	application.context.Register(&starter.ConfigStarter{ConfigPath: configPath})
+	application.context.Register(&starter.DatasourceStarter{})
+	application.context.Register(&starter.LogStarter{})
+	application.context.SortStarter()
+	application.run()
+	return application
+}
+
+// 默认配置启动 config log sql等
 func Default() Application {
 	application := Application{context: context.ApplicationContext{}}
 	application.context.Register(&starter.ConfigStarter{})
@@ -54,7 +65,6 @@ func (application *Application) start() {
 		// 调用每个starter的start方法
 		starter.Start(application.context)
 	}
-	port = application.context.Get(core.ServerPortKey).(string)
 }
 func (application *Application) Stop() {
 	// 停止所有starter
@@ -63,11 +73,10 @@ func (application *Application) Stop() {
 	}
 }
 
-var port string
-
 func (application *Application) RunIrisServer(app *iris.Application) {
 	for _, route := range app.GetRoutes() {
 		logrus.Info(route)
 	}
+	port := application.context.Get(core.ServerPortKey).(string)
 	_ = app.Run(iris.Addr(port))
 }

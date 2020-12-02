@@ -2,10 +2,9 @@ package starter
 
 import (
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/spf13/viper"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 	"learn-go/web/core"
 	"learn-go/web/core/context"
 )
@@ -30,7 +29,10 @@ type datasource struct {
 
 // 获取默认的DB 若配置了多个 则选择第一个
 func DefaultDB() *gorm.DB {
-	return GetDB(defaultDatasourceName)
+	for key := range dbMap {
+		return GetDB(key)
+	}
+	return nil
 }
 
 func GetDB(datasourceName string) *gorm.DB {
@@ -53,9 +55,12 @@ func (starter *DatasourceStarter) Init(context context.ApplicationContext) {
 func (starter *DatasourceStarter) Start(context context.ApplicationContext) {
 	dbMap = make(map[string]*gorm.DB)
 	for i, datasource := range starter.datasourceList {
-		driverName := datasource.Driver
+		//driverName := datasource.Driver
 		driverUrl := fmt.Sprintf(core.MysqlDriverFormatter, datasource.Username, datasource.Password, datasource.Url)
-		db, err := gorm.Open(driverName, driverUrl)
+		db, err := gorm.Open(mysql.Open(driverUrl), &gorm.Config{
+			SkipDefaultTransaction: true,
+			PrepareStmt:            true,
+		})
 		if err != nil {
 			panic(err)
 		}
@@ -69,6 +74,7 @@ func (starter *DatasourceStarter) Start(context context.ApplicationContext) {
 		}
 		dbMap[datasource.DatasourceName] = db
 	}
+	context.Set("dbMap", dbMap)
 }
 
 // 将配置文件
@@ -84,7 +90,8 @@ func (starter *DatasourceStarter) datasourceAssembly(config viper.Viper) {
 // 关闭db
 func (starter *DatasourceStarter) Finalize(context context.ApplicationContext) {
 	for _, db := range dbMap {
-		db.Close()
+		s, _ := db.DB()
+		s.Close()
 	}
 }
 
