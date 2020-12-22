@@ -5,6 +5,7 @@ import (
 	prefixed "github.com/x-cray/logrus-prefixed-formatter"
 	"learn-go/web/core"
 	"learn-go/web/core/context"
+	"strings"
 )
 
 type LogStarter struct {
@@ -13,6 +14,25 @@ type LogStarter struct {
 
 // 配置Log 后期增加日志相关的配置 和滚动更新
 func (starter LogStarter) Init(context context.ApplicationContext) {
+	config := getConfig()
+	logLevel := config.GetString("logger.level")
+	logLevel = strings.ToLower(logLevel)
+	switch logLevel {
+	case "info":
+		log.SetLevel(log.InfoLevel)
+	case "debug":
+		log.SetLevel(log.DebugLevel)
+	case "error":
+		log.SetLevel(log.ErrorLevel)
+	case "warn":
+		log.SetLevel(log.WarnLevel)
+	case "trace":
+		log.SetLevel(log.TraceLevel)
+	case "fatal":
+		log.SetLevel(log.FatalLevel)
+	case "panic":
+		log.SetLevel(log.PanicLevel)
+	}
 	formatter := prefixed.TextFormatter{
 		ForceColors:     true,
 		DisableColors:   false,
@@ -27,5 +47,5 @@ func (starter LogStarter) Init(context context.ApplicationContext) {
 }
 
 func (starter LogStarter) GetOrder() int {
-	return core.Int32Min
+	return core.Int32Min + 1
 }

@@ -26,7 +26,7 @@ require (
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/sirupsen/logrus v1.7.0
 	github.com/smartystreets/goconvey v1.6.4
-	github.com/sony/sonyflake v1.0.0 // indirect
+	github.com/sony/sonyflake v1.0.0
 	github.com/spf13/viper v1.7.1
 	github.com/valyala/fasthttp v1.17.0 // indirect
 	github.com/x-cray/logrus-prefixed-formatter v0.5.2

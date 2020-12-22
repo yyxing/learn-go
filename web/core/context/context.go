@@ -63,7 +63,7 @@ func (context *ApplicationContext) Set(key string, value interface{}) {
 func (context *ApplicationContext) Get(key string) interface{} {
 	value, ok := context.context[key]
 	if !ok {
-		log.Printf("%v load failed\n", value)
+		log.Printf("%v load failed\n", key)
 	}
 	return value
 }

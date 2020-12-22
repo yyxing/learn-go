@@ -21,6 +21,10 @@ const (
 	GlobalConfigKey = "SystemConfig"
 )
 
+var (
+	localConfig viper.Viper
+)
+
 func (config *ConfigStarter) Init(context context.ApplicationContext) {
 	configPath := "./resource"
 	v := viper.New()
@@ -55,13 +59,16 @@ func (config *ConfigStarter) Init(context context.ApplicationContext) {
 		panic("read config failed error message:" + err.Error())
 	}
 	context.Set(GlobalConfigKey, *v)
-	logrus.Info("config init success")
+	localConfig = *v
+	log.Println("config init success")
 }
-
+func getConfig() viper.Viper {
+	return localConfig
+}
 func (config *ConfigStarter) Finalize(context context.ApplicationContext) {
 	context.Remove(GlobalConfigKey)
 }
 
 func (config *ConfigStarter) GetOrder() int {
-	return core.Int32Min + 1
+	return core.Int32Min
 }

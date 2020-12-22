@@ -2,9 +2,11 @@ package starter
 
 import (
 	"fmt"
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 	"learn-go/web/core"
 	"learn-go/web/core/context"
 )
@@ -41,29 +43,41 @@ func GetDB(datasourceName string) *gorm.DB {
 	}
 	return dbMap[datasourceName]
 }
+func Transaction(tx *gorm.DB, worker func() error) error {
+	err := worker()
+	if err != nil {
+		tx.Rollback()
+		return err
+	}
+	tx.Commit()
+	return nil
+}
 
 // mysql连接配置
 func (starter *DatasourceStarter) Init(context context.ApplicationContext) {
-	config, ok := context.Get(GlobalConfigKey).(viper.Viper)
-	if !ok {
-		panic("config load failed")
-	}
+	config := getConfig()
 	starter.datasourceAssembly(config)
 }
 
 // 正式建立连接
 func (starter *DatasourceStarter) Start(context context.ApplicationContext) {
 	dbMap = make(map[string]*gorm.DB)
+	config := getConfig()
+	loggerConfig := logger.Config{}
 	for i, datasource := range starter.datasourceList {
 		//driverName := datasource.Driver
 		driverUrl := fmt.Sprintf(core.MysqlDriverFormatter, datasource.Username, datasource.Password, datasource.Url)
+		if config.GetBool("logger.showSql") {
+			loggerConfig.LogLevel = logger.Info
+		}
 		db, err := gorm.Open(mysql.Open(driverUrl), &gorm.Config{
 			SkipDefaultTransaction: true,
-			PrepareStmt:            true,
+			Logger:                 logger.New(logrus.StandardLogger(), loggerConfig),
 		})
 		if err != nil {
 			panic(err)
 		}
+		logrus.Infof("datasource %s：%s connect success", datasource.DatasourceName, datasource.Url)
 		if len(datasource.DatasourceName) == 0 {
 			if i == 0 {
 				dbMap[defaultDatasourceName] = db

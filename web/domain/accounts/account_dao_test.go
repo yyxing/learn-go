@@ -17,8 +17,8 @@ var (
 
 func TestAccountDao_Insert(t *testing.T) {
 	Convey("插入数据", t, func() {
-		tx := starter.DefaultDB()
-		accountDao := AccountDao{tx: tx}
+		db := starter.DefaultDB()
+		accountDao := AccountDao{Db: db}
 		result, err := accountDao.Insert(Account{
 			AccountNo:    ksuid.New().String(),
 			AccountName:  "Devil",
@@ -36,8 +36,8 @@ func TestAccountDao_Insert(t *testing.T) {
 
 func TestAccountDao_Find(t *testing.T) {
 	Convey("查询数据", t, func() {
-		tx := starter.DefaultDB()
-		accountDao := AccountDao{tx: tx}
+		db := starter.DefaultDB()
+		accountDao := AccountDao{Db: db}
 		account := accountDao.Find(Account{
 			AccountNo: accountNo,
 		})
@@ -50,8 +50,8 @@ func TestAccountDao_Find(t *testing.T) {
 
 func TestAccountDao_UpdateStatus(t *testing.T) {
 	Convey("修改状态", t, func() {
-		tx := starter.DefaultDB()
-		accountDao := AccountDao{tx: tx}
+		db := starter.DefaultDB()
+		accountDao := AccountDao{Db: db}
 		result, err := accountDao.UpdateStatus(accountNo, 0)
 		So(err, ShouldBeNil)
 		So(result, ShouldEqual, true)
@@ -62,8 +62,8 @@ func TestAccountDao_UpdateStatus(t *testing.T) {
 
 func TestAccountDao_UpdateBalance(t *testing.T) {
 	Convey("修改金额", t, func() {
-		tx := starter.DefaultDB()
-		accountDao := AccountDao{tx: tx}
+		db := starter.DefaultDB()
+		accountDao := AccountDao{Db: db}
 		var amount = float64(-733)
 		result, err := accountDao.UpdateBalance(accountNo, decimal.NewFromFloat(amount))
 		So(err, ShouldBeNil)

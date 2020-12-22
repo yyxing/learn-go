@@ -20,7 +20,7 @@ func InitIris() *iris.Application {
 		Columns: true,
 		LogFunc: func(endTime time.Time, latency time.Duration, status, ip,
 			method, path string, message interface{}, headerMessage interface{}) {
-			logrus.Infof("| %s | %s | %s | %s | %s |",
+			logrus.Debugf("| %s | %s | %s | %s | %s |",
 				latency.String(), status, ip, method,
 				path)
 		},

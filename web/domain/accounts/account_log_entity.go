@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"github.com/shopspring/decimal"
 	"github.com/sirupsen/logrus"
+	"learn-go/web/enums"
 	"learn-go/web/service"
 	"time"
 )
@@ -20,22 +21,20 @@ type AccountLog struct {
 	UserId string `gorm:"not null"`
 	//用户名称
 	Username sql.NullString
-	//账户编号 账户ID
-	TargetAccountNo string `gorm:"not null"`
+	//对方账户编号 账户ID
+	CounterpartyAccountNo string `gorm:"not null"`
 	//目标用户编号
-	TargetUserId string `gorm:"not null"`
+	CounterpartyUserId string `gorm:"not null"`
 	//目标用户名称
-	TargetUsername sql.NullString
+	CounterpartyUsername sql.NullString
 	//交易金额,该交易涉及的金额
 	Amount decimal.Decimal `gorm:"not null"`
 	//交易后余额,该交易后的余额
 	Balance decimal.Decimal
 	//流水交易类型，100 创建账户，>0 为收入类型，<0 为支出类型，自定义
-	TransferType service.TransferType
-	//交易变化标识：-1 出账 1为进账，枚举
-	ChangeFlag service.AccountChangeType
+	TradeType enums.TradeType
 	//交易状态：
-	Status int
+	Status enums.TradeStatus
 	//交易描述
 	Desc string
 	//创建时间
@@ -58,20 +57,18 @@ func (do *AccountLog) FromDTO(dto *service.AccountTransferDTO) {
 		return
 	}
 	do.Amount = amount
-	do.TradeNo = dto.TradeNo
-	do.TargetAccountNo = dto.TradeTarget.AccountNo
-	do.TargetUserId = dto.TradeTarget.UserId
-	do.TargetUsername = sql.NullString{
-		String: dto.TradeTarget.Username,
+	do.CounterpartyAccountNo = dto.CounterpartyAccount.AccountNo
+	do.CounterpartyUserId = dto.CounterpartyAccount.UserId
+	do.CounterpartyUsername = sql.NullString{
+		String: dto.CounterpartyAccount.Username,
 		Valid:  true,
 	}
-	do.AccountNo = dto.TradeBody.AccountNo
+	do.AccountNo = dto.TradeAccount.AccountNo
 	do.Username = sql.NullString{
-		String: dto.TradeBody.Username,
+		String: dto.TradeAccount.Username,
 		Valid:  true,
 	}
-	do.UserId = dto.TradeBody.UserId
-	do.TransferType = dto.TransferType
-	do.ChangeFlag = dto.ChangeFlag
+	do.UserId = dto.TradeAccount.UserId
+	do.TradeType = dto.TransferType
 	do.Desc = dto.TradeDesc
 }

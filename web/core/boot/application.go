@@ -28,6 +28,7 @@ func TestEnv(configPath string) Application {
 	application.context.Register(&starter.ConfigStarter{ConfigPath: configPath})
 	application.context.Register(&starter.DatasourceStarter{})
 	application.context.Register(&starter.LogStarter{})
+	application.context.Register(&starter.ValidatorStarter{})
 	application.context.SortStarter()
 	application.run()
 	return application
@@ -75,7 +76,7 @@ func (application *Application) Stop() {
 
 func (application *Application) RunIrisServer(app *iris.Application) {
 	for _, route := range app.GetRoutes() {
-		logrus.Info(route)
+		logrus.Debug(route)
 	}
 	port := application.context.Get(core.ServerPortKey).(string)
 	_ = app.Run(iris.Addr(port))

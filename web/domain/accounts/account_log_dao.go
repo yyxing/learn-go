@@ -6,13 +6,13 @@ import (
 )
 
 type AccountLogDao struct {
-	tx *gorm.DB
+	Db *gorm.DB
 }
 
 // 插入交易流水
 func (dao *AccountLogDao) Insert(log AccountLog) (bool, error) {
-	tx := dao.tx
-	if err := tx.Create(&log).Error; err != nil {
+	db := dao.Db
+	if err := db.Create(&log).Error; err != nil {
 		logrus.Errorf("create account log error. errorMessage: %s", err)
 		return false, err
 	}
@@ -21,9 +21,9 @@ func (dao *AccountLogDao) Insert(log AccountLog) (bool, error) {
 
 // 根据流水编号查询
 func (dao *AccountLogDao) GetByLogNo(logNo string) *AccountLog {
-	tx := dao.tx
+	db := dao.Db
 	accountLog := &AccountLog{LogNo: logNo}
-	if err := tx.Find(accountLog).Error; err != nil {
+	if err := db.Find(accountLog).Error; err != nil {
 		logrus.Errorf("create account log error. errorMessage: %s", err)
 		return nil
 	}
@@ -32,9 +32,9 @@ func (dao *AccountLogDao) GetByLogNo(logNo string) *AccountLog {
 
 // 根据交易编号查询
 func (dao *AccountLogDao) GetByTradeNo(tradeNo string) *AccountLog {
-	tx := dao.tx
+	db := dao.Db
 	accountLog := &AccountLog{TradeNo: tradeNo}
-	if err := tx.Find(accountLog).Error; err != nil {
+	if err := db.Find(accountLog).Error; err != nil {
 		logrus.Errorf("create account log error. errorMessage: %s", err)
 		return nil
 	}
