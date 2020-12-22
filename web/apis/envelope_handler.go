@@ -4,6 +4,7 @@ import (
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/context"
 	"github.com/sirupsen/logrus"
+	"gorm.io/gorm"
 	"learn-go/web/core/starter"
 	"learn-go/web/domain/envelopes"
 	"learn-go/web/service"
@@ -11,11 +12,17 @@ import (
 	"net/http"
 )
 
-var envelopeService service.EnvelopeService
+var (
+	// 数据库
+	envelopeDb *gorm.DB
+	// 查询service
+	envelopeService service.EnvelopeService
+)
 
 func registerEnvelopeHandlers(app *iris.Application) {
+	envelopeDb = starter.DefaultDB()
+	envelopeService = envelopes.GetEnvelopeService(envelopeDb)
 	envelopeGroup := app.Party("/v1/envelope")
-	envelopeService = envelopes.GetEnvelopeService(starter.DefaultDB())
 	envelopeGroup.Post("/", sendRedEnvelope)
 	envelopeGroup.Get("/{envelopeId:string}", getRedEnvelope)
 	envelopeGroup.Get("/user/{userId:string}/receive", userReceiveRedEnvelope)
@@ -32,7 +39,14 @@ func sendRedEnvelope(ctx context.Context) {
 		_, _ = ctx.JSON(Fail(http.StatusBadRequest, "数据解析错误", nil))
 		return
 	}
-	envelopeDTO, err := envelopeService.SendEnvelope(envelopeSendDTO)
+	var envelopeDTO *service.RedEnvelopeDTO
+	tx := envelopeDb.Begin()
+	err = starter.Transaction(tx, func() error {
+		envelopeService := envelopes.GetEnvelopeService(tx)
+		result, envelopeError := envelopeService.SendEnvelope(envelopeSendDTO)
+		envelopeDTO = result
+		return envelopeError
+	})
 	if err != nil {
 		logrus.Error(err)
 		_, _ = ctx.JSON(Fail(http.StatusInternalServerError, "服务器错误", err))
@@ -93,7 +107,14 @@ func receiveRedEnvelopes(ctx context.Context) {
 		_, _ = ctx.JSON(Fail(http.StatusBadRequest, "数据解析错误", nil))
 		return
 	}
-	redEnvelopeItemDTO, err := envelopeService.ReceiveEnvelope(redEnvelopeReceiveDTO)
+	var redEnvelopeItemDTO *service.RedEnvelopeItemDTO
+	tx := envelopeDb.Begin()
+	err = starter.Transaction(tx, func() error {
+		envelopeService := envelopes.GetEnvelopeService(tx)
+		result, envelopeError := envelopeService.ReceiveEnvelope(redEnvelopeReceiveDTO)
+		redEnvelopeItemDTO = result
+		return envelopeError
+	})
 	if err != nil {
 		logrus.Error(err)
 		_, _ = ctx.JSON(Fail(http.StatusInternalServerError, "服务器错误", redEnvelopeItemDTO))

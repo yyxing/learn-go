@@ -96,6 +96,10 @@ func (svc *envelopeService) SendEnvelope(dto service.RedEnvelopeSendDTO) (*servi
 
 // 收红包
 func (svc *envelopeService) ReceiveEnvelope(dto service.RedEnvelopeReceiveDTO) (*service.RedEnvelopeItemDTO, error) {
+	err := starter.ParamValidate(dto)
+	if err != nil {
+		return nil, err
+	}
 	redEnvelopeItem := RedEnvelopeItem{}
 	redEnvelopeItem.fromDTO(dto)
 	envelopeDao := svc.envelopeDao
@@ -104,7 +108,7 @@ func (svc *envelopeService) ReceiveEnvelope(dto service.RedEnvelopeReceiveDTO) (
 	if redEnvelopeGood.RemainAmount.Equal(decimal.NewFromFloat(0)) || redEnvelopeGood.RemainQuantity == 0 {
 		return nil, envelopeError{"红包领完啦，下次早点来哦！"}
 	}
-	err := svc.tx.Transaction(func(tx *gorm.DB) error {
+	err = svc.tx.Transaction(func(tx *gorm.DB) error {
 
 		if redEnvelopeGood == nil {
 			return envelopeError{"要领取的红包不存在"}
