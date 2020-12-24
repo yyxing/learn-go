@@ -21,12 +21,12 @@ type starterRegister struct {
 	starters []Starter
 }
 
-func (register starterRegister) Len() int { return len(register.starters) }
-func (register starterRegister) Swap(i, j int) {
+func (register *starterRegister) Len() int { return len(register.starters) }
+func (register *starterRegister) Swap(i, j int) {
 	starters := register.starters
 	starters[i], starters[j] = starters[j], starters[i]
 }
-func (register starterRegister) Less(i, j int) bool {
+func (register *starterRegister) Less(i, j int) bool {
 	return register.starters[i].GetOrder() < register.starters[j].GetOrder()
 }
 
@@ -44,7 +44,7 @@ func (context *ApplicationContext) Register(starter Starter) {
 
 // 注册starter到上下文中
 func (context *ApplicationContext) SortStarter() {
-	sort.Sort(context.starterRegister)
+	sort.Sort(&context.starterRegister)
 }
 
 // 注册器注册

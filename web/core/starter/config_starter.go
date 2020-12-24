@@ -38,7 +38,7 @@ func (config *ConfigStarter) Init(context context.ApplicationContext) {
 	} else {
 		files, err := ioutil.ReadDir(configPath)
 		if err != nil {
-			log.Println("Find config file failed use default config")
+			log.Println("Find config files failed use default config")
 		}
 		v.AddConfigPath(configPath)
 		suffix := ""
@@ -62,7 +62,7 @@ func (config *ConfigStarter) Init(context context.ApplicationContext) {
 	localConfig = *v
 	log.Println("config init success")
 }
-func getConfig() viper.Viper {
+func GetConfig() viper.Viper {
 	return localConfig
 }
 func (config *ConfigStarter) Finalize(context context.ApplicationContext) {

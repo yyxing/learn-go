@@ -14,7 +14,7 @@ type LogStarter struct {
 
 // 配置Log 后期增加日志相关的配置 和滚动更新
 func (starter LogStarter) Init(context context.ApplicationContext) {
-	config := getConfig()
+	config := GetConfig()
 	logLevel := config.GetString("logger.level")
 	logLevel = strings.ToLower(logLevel)
 	switch logLevel {

@@ -13,7 +13,7 @@ type HttpResponse struct {
 
 func Success(message string, data interface{}) HttpResponse {
 	return HttpResponse{
-		Code:    http.StatusOK,
+		Code:    0,
 		Message: message,
 		Data:    data,
 	}

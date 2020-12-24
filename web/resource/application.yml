@@ -6,7 +6,13 @@ datasource:
     datasourceName: resk
 
 server:
-  port: 8000
+  port: 7000
 logger:
   level: debug
-  showSql: true
+  showSql: false
+oss:
+  accessKey: minioadmin
+  secretKey: minioadmin
+  endpoint: 127.0.0.1:9000
+  bucketName: boden-file
+  bucketNameThumbnail: boden-file-thumbnail

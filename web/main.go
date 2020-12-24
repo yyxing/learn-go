@@ -11,5 +11,6 @@ func main() {
 	iris := app.InitIris()
 	apis.Routes(iris)
 	application.RunIrisServer(iris)
+
 	defer application.Stop()
 }

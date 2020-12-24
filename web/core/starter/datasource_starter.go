@@ -55,14 +55,14 @@ func Transaction(tx *gorm.DB, worker func() error) error {
 
 // mysql连接配置
 func (starter *DatasourceStarter) Init(context context.ApplicationContext) {
-	config := getConfig()
+	config := GetConfig()
 	starter.datasourceAssembly(config)
 }
 
 // 正式建立连接
 func (starter *DatasourceStarter) Start(context context.ApplicationContext) {
 	dbMap = make(map[string]*gorm.DB)
-	config := getConfig()
+	config := GetConfig()
 	loggerConfig := logger.Config{}
 	for i, datasource := range starter.datasourceList {
 		//driverName := datasource.Driver

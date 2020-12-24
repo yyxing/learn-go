@@ -7,4 +7,5 @@ import (
 func Routes(app *iris.Application) {
 	registerAccountHandlers(app)
 	registerEnvelopeHandlers(app)
+	registerFileHandlers(app)
 }

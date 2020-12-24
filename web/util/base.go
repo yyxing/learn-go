@@ -2,12 +2,15 @@ package util
 
 import (
 	jsoniter "github.com/json-iterator/go"
+	imgext "github.com/shamsher31/goimgext"
 	"github.com/shopspring/decimal"
 	"github.com/sirupsen/logrus"
 	"github.com/sony/sonyflake"
 	"learn-go/web/enums"
 	"math/rand"
+	"net/http"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -77,4 +80,17 @@ func GenerateRedEnvelopeAmount(remainQuantity int64, remainAmount decimal.Decima
 	max := remainAmount.Div(decimal.NewFromInt(remainQuantity)).Mul(decimal.NewFromInt(200))
 	random := rand.New(seed)
 	return decimal.NewFromInt(random.Int63n(max.IntPart())).Add(min).Div(penny)
+}
+
+func GetFileType(bytes []byte) string {
+	filetype := http.DetectContentType(bytes[:20])
+
+	ext := imgext.Get()
+
+	for i := 0; i < len(ext); i++ {
+		if strings.Contains(ext[i], filetype[6:]) {
+			return filetype
+		}
+	}
+	return ""
 }

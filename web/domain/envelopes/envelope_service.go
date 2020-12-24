@@ -122,7 +122,7 @@ func (svc *envelopeService) ReceiveEnvelope(dto service.RedEnvelopeReceiveDTO) (
 		// 扣除金额和数量
 		result, err := envelopeDao.ReceiveRedEnvelope(dto.EnvelopeNo, receiveAmount)
 		if !result {
-			return envelopeError{"网络异常，请稍后再领取！"}
+			return envelopeError{"抢的人太多啦，请稍后再领取！"}
 		}
 		if err != nil {
 			return err

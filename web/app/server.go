@@ -8,9 +8,20 @@ import (
 	"time"
 )
 
+func Cors(ctx iris.Context) {
+	ctx.Header("Access-Control-Allow-Origin", "*")
+	if ctx.Request().Method == "OPTIONS" {
+		ctx.Header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,PATCH,OPTIONS")
+		ctx.Header("Access-Control-Allow-Headers", "Content-Type, Accept, Authorization")
+		ctx.StatusCode(204)
+		return
+	}
+	ctx.Next()
+}
 func InitIris() *iris.Application {
 	app := iris.New()
 	app.Use(irisRecover.New())
+	app.Use(Cors)
 	cfg := logger.Config{
 		Status:  true,
 		IP:      true,
