@@ -29,12 +29,7 @@ func TestEnvelopeDao_FindSendByUserId(t *testing.T) {
 func TestEnvelopeDao_FindExpired(t *testing.T) {
 	Convey("查询过期红包", t, func() {
 		envelopeDao := EnvelopeDao{tx: starter.DefaultDB()}
-		param := util.PageParam{
-			All:     false,
-			Size:    1,
-			Current: 2,
-		}
-		redEnvelopeGoods := envelopeDao.FindExpired(param.Page())
+		redEnvelopeGoods := envelopeDao.FindExpired()
 		logrus.Info(redEnvelopeGoods[0])
 		So(redEnvelopeGoods, ShouldNotBeNil)
 		So(len(redEnvelopeGoods), ShouldEqual, 1)

@@ -238,3 +238,14 @@ func (svc *envelopeService) Refund(envelopeNo string) (*service.RedEnvelopeDTO, 
 	})
 	return envelopeGood.toDTO(), err
 }
+
+// 退款流程
+func (svc *envelopeService) FindAllExpiredRedEnvelope() []*service.RedEnvelopeDTO {
+	envelopeDao := svc.envelopeDao
+	envelopeGood := envelopeDao.FindExpired()
+	expiredRedEnvelopes := make([]*service.RedEnvelopeDTO, len(envelopeGood))
+	for i, redEnvelope := range envelopeGood {
+		expiredRedEnvelopes[i] = redEnvelope.toDTO()
+	}
+	return expiredRedEnvelopes
+}

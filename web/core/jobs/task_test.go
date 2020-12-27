@@ -55,3 +55,24 @@ func TestMultiJobRun(t *testing.T) {
 		}
 	})
 }
+func TestJobStop(t *testing.T) {
+	convey.Convey("测试任务运行", t, func() {
+		scheduler := NewScheduler(100000)
+		now := time.Now()
+		err := scheduler.Start(now).JobType(RecurrenceTask).Second(5).Do("testTask", func() {
+			fmt.Println(time.Now(), "task1 running!")
+		})
+		err = scheduler.Start(now).JobType(RecurrenceTask).Second(10).Do("testTask2", func() {
+			fmt.Println(time.Now(), "task2 running!")
+		})
+		if err != nil {
+			logrus.Error(err)
+		}
+		scheduler.Run()
+		time.Sleep(11 * time.Second)
+		scheduler.Stop()
+		for {
+
+		}
+	})
+}

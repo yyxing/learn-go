@@ -23,6 +23,8 @@ type EnvelopeService interface {
 	FindEnvelopes(util.PageParam) *util.Page
 	// 退款
 	Refund(string) (*RedEnvelopeDTO, error)
+	// 查询所有的过期红包
+	FindAllExpiredRedEnvelope() []*RedEnvelopeDTO
 }
 
 // 发送红包DTO

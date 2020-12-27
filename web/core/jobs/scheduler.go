@@ -2,16 +2,17 @@ package jobs
 
 import (
 	"errors"
-	"fmt"
+	log "github.com/sirupsen/logrus"
 	"sort"
 	"time"
 )
 
 type Scheduler struct {
-	jobs []*Job
-	size int
-	head int
-	tail int
+	jobs    []*Job
+	size    int
+	head    int
+	tail    int
+	stopped chan bool
 }
 
 func (scheduler *Scheduler) Len() int { return scheduler.tail }
@@ -26,8 +27,8 @@ func (scheduler *Scheduler) Less(i, j int) bool {
 
 // 开始运行
 func (scheduler *Scheduler) Run() {
-	stopped := make(chan bool, 1)
-	fmt.Println("startTime:", time.Now())
+	scheduler.stopped = make(chan bool, 1)
+	log.Info("scheduler startTime: ", time.Now().Format("2006-01-02 15:04:05"))
 	ticker := time.NewTicker(1 * time.Second)
 	go func() {
 		for {
@@ -40,8 +41,9 @@ func (scheduler *Scheduler) Run() {
 					go job.run()
 					job.calcNextRun()
 				}
-			case <-stopped:
+			case <-scheduler.stopped:
 				ticker.Stop()
+				log.Info("scheduler stop success")
 				return
 			}
 		}
@@ -104,4 +106,11 @@ func (scheduler *Scheduler) StartToday(hour int, minute int, second int) *Job {
 	scheduler.jobs[scheduler.tail] = job
 	scheduler.tail++
 	return job
+}
+func (scheduler *Scheduler) Stop() {
+	if scheduler.stopped != nil {
+		scheduler.stopped <- true
+	} else {
+		log.Error("stop error. must run scheduler before stop")
+	}
 }

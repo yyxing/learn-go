@@ -128,19 +128,13 @@ func (dao *EnvelopeDao) FindRedEnvelopes(page *util.Page) []*RedEnvelopeGood {
 }
 
 // 查询所有过期的红包
-func (dao *EnvelopeDao) FindExpired(page *util.Page) []*RedEnvelopeGood {
+func (dao *EnvelopeDao) FindExpired() []*RedEnvelopeGood {
 	var expiredRedEnvelope []*RedEnvelopeGood
-	var totalCount int64
-	if err := dao.tx.Scopes(paginate(page)).Where("expired_at <= ?", time.Now()).
+	if err := dao.tx.Where("expired_at <= ?", time.Now()).
 		Find(&expiredRedEnvelope).Error; err != nil {
 		logrus.Error(err)
 		return nil
 	}
-	if err := dao.tx.Where("expired_at <= ?", time.Now()).Count(&totalCount).Error; err != nil {
-		logrus.Error(err)
-		return nil
-	}
-	page.Total = totalCount
 	return expiredRedEnvelope
 }
 
