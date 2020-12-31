@@ -24,9 +24,9 @@ GOOS=linux
 GOARCH=amd64
 build
 
-#windows 64
-GOOS=windows
-GOARCH=amd64
-build
+##windows 64
+#GOOS=windows
+#GOARCH=amd64
+#build
 
 

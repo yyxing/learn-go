@@ -48,11 +48,12 @@ func main() {
 	//if err != nil {
 	//	panic(err)
 	//}
-	route := IrisRoute()
-	err := route.Run(iris.Addr(":8090"))
-	if err != nil {
-		panic(err)
-	}
+
+	//route := IrisRoute()
+	//err := route.Run(iris.Addr(":8090"))
+	//if err != nil {
+	//	panic(err)
+	//}
 	//route := FastRoute()
 	//err := fasthttp.ListenAndServe(":8090", route.HandleRequest)
 	//if err != nil {

@@ -24,29 +24,36 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6eab2ed-6d8e-431a-9313-6d2903e0773b" name="Default Changelist" comment="try">
-      <change afterPath="$PROJECT_DIR$/web/infra/db/accounts/account_entity.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/infra/db/accounts/account_log_entity.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/infra/db/accounts/dao_account_log.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/infra/db/accounts/dao_account_log_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/infra/db/accounts/dao_account_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/util/base.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="b6eab2ed-6d8e-431a-9313-6d2903e0773b" name="Default Changelist" comment="增加调度模块测试代码">
+      <change afterPath="$PROJECT_DIR$/glu/context/context.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glu/glu.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glu/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glu/main/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glu/router/router.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/glu/router/trie.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/k8s/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/load_balance/consistent_hash_balancer.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/load_balance/load_balance.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/load_balance/load_balance_factory.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/load_balance/load_balance_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/load_balance/main/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/load_balance/rand_load_balancer.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/load_balance/round_robin_balancer.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/load_balance/weight_robin_balancer.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/proxy/forward_proxy.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/proxy/real_server.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/proxy/reverse_proxy.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/reverse_proxy/reverse_proxy.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/scripts/build.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/scripts/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-go/scripts/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learn-go/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/learn-go/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learn-go/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/learn-go/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learn-go/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/learn-go/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pool/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/pool/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/core/boot/application.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/core/boot/application.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/core/globalVariable.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/core/globalVariable.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/core/starter/configStarter.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/core/starter/configStarter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/core/starter/datasourceStarter.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/core/starter/datasourceStarter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/web/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/infra/db/accounts/dao_account.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/infra/db/accounts/dao_account.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/infra/db/accounts/domain_account.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/resource/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/web/resource/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/service/accounts.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/service/accounts.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/service/accounts_constants.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/service/accounts_constants.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/web/build.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webstream/api/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/webstream/api/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webstream/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/webstream/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webstream/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/webstream/go.sum" afterDir="false" />
     </list>
@@ -86,88 +93,91 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/webstream/api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/learn-go/scripts" />
     <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\bodenai\go\src\learn-go\web\core\context" />
-      <recent name="C:\Users\bodenai\go\src\learn-go\web\core" />
+      <recent name="C:\Users\bodenai\go\src\learn-go\glu\main" />
+      <recent name="C:\Users\bodenai\go\src\learn-go" />
+      <recent name="C:\Users\bodenai\go\src\learn-go\learn-go\load_balance\main" />
+      <recent name="C:\Users\bodenai\go\src\learn-go\web\tasks" />
+      <recent name="C:\Users\bodenai\go\src\learn-go\web\domain\accounts" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\bodenai\go\src\learn-go\webstream\api" />
+      <recent name="C:\Users\bodenai\go\src\learn-go\learn-go\scripts" />
+      <recent name="C:\Users\bodenai\go\src\learn-go\web\domain\files" />
+      <recent name="C:\Users\bodenai\go\src\learn-go\web" />
+      <recent name="C:\Users\bodenai\go\src\learn-go\web\enums" />
+      <recent name="C:\Users\bodenai\go\src\learn-go\web\domain\envelopes" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestAccountLogDao_GetByTradeNo in learn-go/web/infra/db/accounts">
-    <configuration name="Test in learn-go/web/infra/db/accounts" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="project" />
-      <working_directory value="$PROJECT_DIR$/web/infra/db/accounts" />
-      <framework value="gotest" />
+  <component name="RunManager" selected="Go Build.go build github.com/yyxing/glu/main">
+    <configuration name="go build awesomeProject/load_balance/main" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="learn-go" />
+      <working_directory value="$PROJECT_DIR$/learn-go" />
       <kind value="PACKAGE" />
-      <package value="learn-go/web/infra/db/accounts" />
+      <filePath value="$PROJECT_DIR$/learn-go/load_balance/main/main.go" />
+      <package value="awesomeProject/load_balance/main" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTest\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestAccountDao_Insert in learn-go/web/infra/db/accounts" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="project" />
-      <working_directory value="$PROJECT_DIR$/web/infra/db/accounts" />
-      <framework value="gotest" />
+    <configuration name="go build github.com/yyxing/glu/main" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="learn-go" />
+      <working_directory value="$PROJECT_DIR$/glu" />
       <kind value="PACKAGE" />
-      <package value="learn-go/web/infra/db/accounts" />
+      <filePath value="$PROJECT_DIR$/glu/main/main.go" />
+      <package value="github.com/yyxing/glu/main" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestAccountDao_Insert\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestAccountLogDao_GetByLogNo in learn-go/web/infra/db/accounts" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="project" />
-      <working_directory value="$PROJECT_DIR$/web/infra/db/accounts" />
+    <configuration name="TestConsistentHashBalancer in awesomeProject/load_balance" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="learn-go" />
+      <working_directory value="$PROJECT_DIR$/learn-go/load_balance" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="learn-go/web/infra/db/accounts" />
+      <package value="awesomeProject/load_balance" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestAccountLogDao_GetByLogNo\E$" />
+      <pattern value="^\QTestConsistentHashBalancer\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestAccountLogDao_GetByTradeNo in learn-go/web/infra/db/accounts" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="project" />
-      <working_directory value="$PROJECT_DIR$/web/infra/db/accounts" />
+    <configuration name="TestRoundRobinLoadBalance in awesomeProject/load_balance" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="learn-go" />
+      <working_directory value="$PROJECT_DIR$/learn-go/load_balance" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="learn-go/web/infra/db/accounts" />
+      <package value="awesomeProject/load_balance" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestAccountLogDao_GetByTradeNo\E$" />
+      <pattern value="^\QTestRoundRobinLoadBalance\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestAccountLogDao_Insert in learn-go/web/infra/db/accounts" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="project" />
-      <working_directory value="$PROJECT_DIR$/web/infra/db/accounts" />
+    <configuration name="TestWeightRobinBalancer in awesomeProject/load_balance" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="learn-go" />
+      <working_directory value="$PROJECT_DIR$/learn-go/load_balance" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="learn-go/web/infra/db/accounts" />
+      <package value="awesomeProject/load_balance" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestAccountLogDao_Insert\E$" />
+      <pattern value="^\QTestWeightRobinBalancer\E$" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Go Test.Test in learn-go/web/infra/db/accounts" />
-      <item itemvalue="Go Test.TestAccountDao_Insert in learn-go/web/infra/db/accounts" />
-      <item itemvalue="Go Test.TestAccountLogDao_Insert in learn-go/web/infra/db/accounts" />
-      <item itemvalue="Go Test.TestAccountLogDao_GetByLogNo in learn-go/web/infra/db/accounts" />
-      <item itemvalue="Go Test.TestAccountLogDao_GetByTradeNo in learn-go/web/infra/db/accounts" />
+      <item itemvalue="Go Test.TestRoundRobinLoadBalance in awesomeProject/load_balance" />
+      <item itemvalue="Go Test.TestWeightRobinBalancer in awesomeProject/load_balance" />
+      <item itemvalue="Go Test.TestConsistentHashBalancer in awesomeProject/load_balance" />
+      <item itemvalue="Go Build.go build awesomeProject/load_balance/main" />
+      <item itemvalue="Go Build.go build github.com/yyxing/glu/main" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestAccountLogDao_GetByTradeNo in learn-go/web/infra/db/accounts" />
-        <item itemvalue="Go Test.TestAccountLogDao_GetByLogNo in learn-go/web/infra/db/accounts" />
-        <item itemvalue="Go Test.TestAccountLogDao_Insert in learn-go/web/infra/db/accounts" />
-        <item itemvalue="Go Test.TestAccountDao_Insert in learn-go/web/infra/db/accounts" />
-        <item itemvalue="Go Test.Test in learn-go/web/infra/db/accounts" />
+        <item itemvalue="Go Build.go build github.com/yyxing/glu/main" />
+        <item itemvalue="Go Build.go build awesomeProject/load_balance/main" />
+        <item itemvalue="Go Test.TestConsistentHashBalancer in awesomeProject/load_balance" />
+        <item itemvalue="Go Test.TestWeightRobinBalancer in awesomeProject/load_balance" />
+        <item itemvalue="Go Test.TestRoundRobinLoadBalance in awesomeProject/load_balance" />
       </list>
     </recent_temporary>
   </component>
@@ -192,7 +202,13 @@
       <path value="$PROJECT_DIR$/learn-go" />
     </ignored-roots>
     <MESSAGE value="try" />
-    <option name="LAST_COMMIT_MESSAGE" value="try" />
+    <MESSAGE value="业务代码" />
+    <MESSAGE value="增加账户api层 红包逻辑测试服务层完成 修改配置的获取方式 增加配置的level 以及是否显示sql 增加error的公共处理 增加事务的封装 事务由service层提升到controller层 修改枚举文件位置 增加所有接口的单测" />
+    <MESSAGE value="增加数据库初始化文件 增加红包controller层" />
+    <MESSAGE value="增加handler事务处理" />
+    <MESSAGE value="增加调度模块 手写了一个调度器 新增文件上传模块" />
+    <MESSAGE value="增加调度模块测试代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加调度模块测试代码" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -211,26 +227,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="329" y="361" key="#SQL_Dialects/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606196272013" />
-    <state x="414" y="175" width="1092" height="765" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606208079241">
+    <state x="414" y="175" width="1092" height="840" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609315443182">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="175" width="1092" height="765" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606208079241" />
-    <state x="737" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1606900487718">
+    <state x="414" y="175" width="1092" height="840" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609315443182" />
+    <state x="667" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608477491584">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="737" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606900487718" />
-    <state width="488" height="466" key="DebuggerActiveHint" timestamp="1606208425063">
+    <state x="667" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1608477491584" />
+    <state x="737" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1608864291378">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="488" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606208425063" />
+    <state x="737" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1608864291378" />
+    <state x="715" y="219" key="#xdebugger.evaluate" timestamp="1608887562344">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="715" y="219" key="#xdebugger.evaluate/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1608887562344" />
+    <state width="753" height="466" key="DebuggerActiveHint" timestamp="1608514770770">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="753" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1608514770770" />
     <state x="847" y="379" key="EnvironmentVariablesDialog" timestamp="1606184099661">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="847" y="379" key="EnvironmentVariablesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606184099661" />
-    <state x="740" y="287" key="FileChooserDialogImpl" timestamp="1606208076570">
+    <state x="740" y="287" key="FileChooserDialogImpl" timestamp="1608517074084">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="287" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606208076570" />
+    <state x="740" y="287" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1608517074084" />
     <state width="1877" height="335" key="GridCell.Tab.-1.bottom" timestamp="1606404760110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -247,38 +271,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="335" key="GridCell.Tab.-1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606404760110" />
-    <state width="1877" height="279" key="GridCell.Tab.0.bottom" timestamp="1606902149883">
+    <state width="1877" height="230" key="GridCell.Tab.0.bottom" timestamp="1609408059319">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606902149883" />
-    <state width="1877" height="279" key="GridCell.Tab.0.center" timestamp="1606902149883">
+    <state width="1877" height="230" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609408059319" />
+    <state width="1877" height="230" key="GridCell.Tab.0.center" timestamp="1609408059319">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="279" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606902149883" />
-    <state width="1877" height="279" key="GridCell.Tab.0.left" timestamp="1606902149883">
+    <state width="1877" height="230" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609408059319" />
+    <state width="1877" height="230" key="GridCell.Tab.0.left" timestamp="1609408059319">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="279" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606902149883" />
-    <state width="1877" height="279" key="GridCell.Tab.0.right" timestamp="1606902149883">
+    <state width="1877" height="230" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609408059319" />
+    <state width="1877" height="230" key="GridCell.Tab.0.right" timestamp="1609408059319">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="279" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606902149883" />
-    <state x="-168" y="388" width="1877" height="335" key="GridCell.Tab.1.bottom" timestamp="1606892970086">
+    <state width="1877" height="230" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609408059319" />
+    <state x="-168" y="388" width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1609396513242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="-168" y="388" width="1877" height="335" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606892970086" />
-    <state x="-168" y="388" width="1877" height="335" key="GridCell.Tab.1.center" timestamp="1606892970086">
+    <state x="-168" y="388" width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609396513242" />
+    <state x="-168" y="388" width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1609396513242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="-168" y="388" width="1877" height="335" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606892970086" />
-    <state x="-168" y="388" width="1877" height="335" key="GridCell.Tab.1.left" timestamp="1606892970086">
+    <state x="-168" y="388" width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609396513242" />
+    <state x="-168" y="388" width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1609396513241">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="-168" y="388" width="1877" height="335" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606892970086" />
-    <state x="-168" y="388" width="1877" height="335" key="GridCell.Tab.1.right" timestamp="1606892970086">
+    <state x="-168" y="388" width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609396513241" />
+    <state x="-168" y="388" width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1609396513242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="-168" y="388" width="1877" height="335" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606892970086" />
+    <state x="-168" y="388" width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609396513242" />
     <state x="-168" y="388" width="1848" height="307" key="GridCell.Tab.2.bottom" timestamp="1606404772179">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -299,22 +323,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606643992289" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606831536648">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1609051947392">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606831536648" />
-    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1606210985503">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609051947392" />
+    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1608866813145">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606210985503" />
+    <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1608866813145" />
     <state x="763" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606699293424">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="763" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606699293424" />
-    <state x="502" y="249" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1606198512600">
+    <state x="502" y="249" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1608641572140">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="502" y="249" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606198512600" />
+    <state x="502" y="249" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1608641572140" />
     <state x="-168" y="388" width="1864" height="374" key="dock-window-1" timestamp="1606404850499">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -323,25 +347,50 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-222" y="487" width="1864" height="374" key="dock-window-2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606441532753" />
-    <state x="662" y="252" width="596" height="594" key="find.popup" timestamp="1606714292783">
+    <state x="662" y="252" width="596" height="594" key="find.popup" timestamp="1608781993961">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="662" y="252" width="596" height="594" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606714292783" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606801557140">
+    <state x="662" y="252" width="596" height="594" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1608781993961" />
+    <state x="800" y="278" key="refactoring.ChangeSignatureDialog" timestamp="1608477314802">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606801557140" />
+    <state x="800" y="278" key="refactoring.ChangeSignatureDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1608477314802" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1609318343166">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609318343166" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/web/domain/accounts/account_service.go</url>
+          <line>188</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/../../pkg/mod/k8s.io/client-go@v0.19.0/rest/url_utils.go</url>
+          <line>84</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/../../pkg/mod/k8s.io/client-go@v0.19.0/rest/config.go</url>
+          <line>306</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="DlvErrorBreakpoint" />
       </default-breakpoints>
     </breakpoint-manager>
     <watches-manager>
+      <configuration name="GoApplicationRunConfiguration">
+        <watch expression="minioClient" language="go" />
+      </configuration>
       <configuration name="GoTestRunConfiguration">
         <watch expression="Db" language="go" />
         <watch expression="dbMap" language="go" />
+        <watch expression="db" language="go" />
       </configuration>
     </watches-manager>
   </component>
