@@ -11,6 +11,7 @@ var (
 )
 
 type Handler func(*Context)
+type Handlers []Handler
 
 const (
 	// ContentTypeHeaderKey is the header key of "Content-Type".
@@ -48,24 +49,47 @@ const (
 )
 
 type Context struct {
-	Writer  http.ResponseWriter
-	Request *http.Request
-	Path    string
-	Method  string
-	Params  map[string]string
+	Writer              http.ResponseWriter
+	Request             *http.Request
+	Path                string
+	Method              string
+	Params              map[string]string
+	handlers            Handlers
+	currentHandlerIndex int
 }
 
+func (c *Context) Next() {
+	if n, handlers := c.HandlerIndex(-1)+1, c.Handlers(); n < len(handlers) {
+		c.HandlerIndex(n)
+		handlers[n](c)
+	}
+}
+func (c *Context) Handlers() Handlers {
+	return c.handlers
+}
+func (c *Context) SetHandlers(handlers ...Handler) {
+	c.handlers = append(c.handlers, handlers...)
+}
+func (c *Context) HandlerIndex(n int) int {
+	if n < 0 || n > len(c.handlers)-1 {
+		return c.currentHandlerIndex
+	}
+	c.currentHandlerIndex = n
+	return n
+}
 func NewContext(writer http.ResponseWriter, request *http.Request) *Context {
 	return &Context{
-		Writer:  writer,
-		Request: request,
-		Path:    request.URL.Path,
-		Method:  request.Method,
+		Writer:              writer,
+		Request:             request,
+		Path:                request.URL.Path,
+		Method:              request.Method,
+		handlers:            make(Handlers, 0),
+		currentHandlerIndex: -1,
 	}
 }
 
 // 获取header中的值
-func (c *Context) HeaderValue(key string) string {
+func (c *Context) Query(key string) string {
 	return c.Request.URL.Query().Get(key)
 }
 
@@ -86,7 +110,7 @@ func (c *Context) Write(body []byte) (int, error) {
 	c.ContentType(ContentTextHeaderValue)
 	return c.Writer.Write(body)
 }
-func (c *Context) GetParam(key string) string {
+func (c *Context) Param(key string) string {
 	return c.Params[key]
 }
 func (c *Context) WriteString(str string) (int, error) {
